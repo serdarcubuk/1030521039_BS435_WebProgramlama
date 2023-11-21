@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import GameModeSelector from './GameModeSelector';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const Home = () => {
+    return (
+        <div>
+
+            <GameModeSelector />
+        </div>
+    );
+};
+
+const Mode1 = () => {
+    return <div>Content for Mode1</div>;
+};
+
+const Mode2 = () => {
+    return <div>Content for Mode2</div>;
+};
+
+const App = () => {
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/MODE1" element={<Mode1 />} />
+                <Route path="/MODE2" element={<Mode2 />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
