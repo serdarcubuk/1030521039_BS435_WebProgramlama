@@ -14,9 +14,9 @@ const GameModeSelector = () => {
     return (
         <div id={"res"}>
             <div>
-                <h1>Game App</h1>
+                <h1>Welcome To The Guess The Number Game</h1>
 
-            <h2>Select Game Mode</h2>
+            <h2>Select The Game Mode</h2>
             <Link to="/mode1">
                 <button onClick={() => handleModeSelect('MODE1')}>Mode1</button>
             </Link>
