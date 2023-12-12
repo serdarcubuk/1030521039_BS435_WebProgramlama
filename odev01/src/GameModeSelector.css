@@ -8,10 +8,10 @@
     text-align: center;
     direction: ltr;
     background-color:lightskyblue;
-    padding: 300px;
+    padding: 17%;
     border-radius: 80px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 15%;
+    margin-top: 0%;
     overflow: auto;
     width: 50%;
 }
