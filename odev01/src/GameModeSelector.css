@@ -1,32 +1,27 @@
 /* GameModeSelector.css */
 
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('erü2.jpg'); /* Logo resminin yolunu doğru şekilde belirtin */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
 #res {
-
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    direction: ltr;
-    background-color:lightskyblue;
-    padding: 17%;
-    border-radius: 80px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 0%;
-    overflow: auto;
-    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
-#res1 {
-    position: inherit;
-    left: 50%;
-}
-h2 {
-    margin-bottom: 20px;
-}
+/* Diğer stiller buraya eklenebilir */
 
 button {
     margin: 0 70px;
-    padding: 20px 30px;
+    padding: 10px 20px;
     font-size: 50px;
     background-color: antiquewhite;
     border-radius: 0.3rem;

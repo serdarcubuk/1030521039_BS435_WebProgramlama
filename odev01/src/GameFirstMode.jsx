@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './GameFirstMode.css';
+import { Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const GameFirstMode = () => {
     const [minRangeInput, setMinRangeInput] = useState('');
@@ -32,20 +34,20 @@ const GameFirstMode = () => {
         const guess = parseInt(userGuess);
 
         if (!isGameStarted) {
-            setFeedback('Oyun başlamadan tahmin yapamazsınız.');
+            setFeedback('You cannot make a guess before the game starts');
         } else if (isNaN(guess) || guess < minRange || guess > maxRange) {
-            setFeedback('Geçerli bir sayı girin.');
+            setFeedback('Enter a valid number');
         } else {
             setAttempts(attempts + 1);
 
             if (guess === targetNumber) {
-                setFeedback(`Tebrikler! Doğru cevap ${targetNumber}. Doğru bildiniz.`);
+                setFeedback(`Congrats! Answer was ${targetNumber}. Do you want to play again?`);
                 setIsGameOver(true);
             } else if (attempts === 9) {
-                setFeedback(`Üzgünüm, 10 tahmin hakkınız doldu. Doğru cevap ${targetNumber} idi. Yeniden oynamak ister misiniz?`);
+                setFeedback(`Sorry, You have used up your 10 guessing attempts. Correct answer was ${targetNumber}. Do you want to play again?`);
                 setIsGameOver(true);
             } else {
-                setFeedback(guess < targetNumber ? 'Daha yüksek bir sayı deneyin.' : 'Daha düşük bir sayı deneyin.');
+                setFeedback(guess < targetNumber ? 'Try a higher number' : 'Try a lower number');
             }
         }
     };
@@ -55,7 +57,7 @@ const GameFirstMode = () => {
         const parsedMaxRange = parseInt(maxRangeInput);
 
         if (isNaN(parsedMinRange) || isNaN(parsedMaxRange) || parsedMinRange >= parsedMaxRange) {
-            setFeedback('Hata: Oyuna başlamadan önce geçerli bir "Min" ve "Max" değeri girin. Min, Max\'den küçük olmalıdır.');
+            setFeedback('Error: Enter valid Min and Max values before starting the game. Min should be less than Max.');
             return;
         }
 
@@ -79,32 +81,32 @@ const GameFirstMode = () => {
 
     return (
         <div>
-            <h1>Sayı Tahmin Oyunu</h1>
+            <h1>Guess The Number</h1>
             {isGameStarted ? (
                 <>
-                    <p>{`Hedef sayı aralığı: ${minRange} - ${maxRange}`}</p>
-                    <p>{`Tahmin hakkınız: ${10 - attempts }`}</p>
+                    <p>{`The target number range: ${minRange} - ${maxRange}`}</p>
+                    <p>{`Guess attempts: ${10 - attempts }`}</p>
                     <p>{feedback}</p>
                     <input
                         type="text"
-                        placeholder="Sayı tahmini girin"
+                        placeholder="Enter your number guess"
                         value={userGuess}
                         onChange={(e) => setUserGuess(e.target.value)}
                     />
-                    <button onClick={handleGuess} disabled={isGameOver || attempts === 10}>Tahmin Et</button>
+                    <Button onClick={handleGuess} disabled={isGameOver || attempts === 10}>Guess</Button>
                 </>
             ) : (
                 <>
-                    <p>Oyun başlamadan önce hedef sayı aralığını belirleyin.</p>
+                    <p>Set the target number range before starting the game.</p>
                     <p>{feedback}</p>
                     <label>Min Range: <input type="text" value={minRangeInput} onChange={(e) => setMinRangeInput(e.target.value)} /></label>
                     <label>Max Range: <input type="text" value={maxRangeInput} onChange={(e) => setMaxRangeInput(e.target.value)} /></label>
-                    <button onClick={startGame}>Oyunu Başlat</button>
+                    <Button onClick={startGame}>Start</Button>
                 </>
             )}
-            {(feedback.includes('Doğru bildiniz') || feedback.includes('Yeniden oynamak ister misiniz')) && (
+            {(feedback.includes('Correct Answer!') || feedback.includes('Do you want to play again?')) && (
                 <Link to="/">
-                    <button onClick={resetGame}>Başa Dön</button>
+                    <Button onClick={resetGame}>Go Back</Button>
                 </Link>
             )}
         </div>

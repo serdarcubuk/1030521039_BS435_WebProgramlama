@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import GameModeSelector from './GameModeSelector';
 import './App.css';
 import GameFirstMode from "./GameFirstMode";
+import GameSecondMode from "./GameSecondMode";
 
 
 const Home = () => {
     return (
         <div>
-
             <GameModeSelector />
         </div>
     );
@@ -17,14 +17,19 @@ const Home = () => {
 const Mode1 = () => {
     return (
         <div>
-            <h2>Mode 1 Content</h2>
+            <h2>Mode 1</h2>
             <GameFirstMode />
         </div>
     );
 };
 
 const Mode2 = () => {
-    return <div>Content for Mode2</div>;
+    return (
+        <div>
+            <h2>Mode 2</h2>
+            <GameSecondMode />
+        </div>
+    );
 };
 
 const App = () => {
